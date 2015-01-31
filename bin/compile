@@ -56,16 +56,16 @@ cd $build_dir
 
 # If node_modules directory is checked into source control then
 # rebuild any native deps. Otherwise, restore from the build cache.
-if ! $NODE_MODULES_CACHE; then
+# if ! $NODE_MODULES_CACHE; then
   status "node_modules cache was disabled"
-elif test -d $build_dir/node_modules; then
-  status "Using existing node_modules directory"
-  status "Rebuilding any native dependencies"
-  npm rebuild 2>&1 | indent
-elif test -d $cache_dir/node_modules; then
-  status "Restoring node_modules from cache"
-  cp -r $cache_dir/node_modules $build_dir/
-fi
+# elif test -d $build_dir/node_modules; then
+#   status "Using existing node_modules directory"
+#   status "Rebuilding any native dependencies"
+#   npm rebuild 2>&1 | indent
+# elif test -d $cache_dir/node_modules; then
+#   status "Restoring node_modules from cache"
+#   cp -r $cache_dir/node_modules $build_dir/
+# fi
 
 status "Installing StrongLoop dependencies"
 npm install -g strongloop
